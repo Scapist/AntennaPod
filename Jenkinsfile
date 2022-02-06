@@ -11,8 +11,8 @@ pipeline {
             }
         }
         
-        stage('App Test') {
-            try{
+        try {
+            stage('App Test') {
                 steps {
                     echo 'Testing app...'
                     sh './gradlew connectedAndroidTest'
