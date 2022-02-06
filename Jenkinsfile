@@ -11,10 +11,22 @@ pipeline {
             }
         }
         
-        stage('Test') {
+        stage('App Test') {
+            try{
+                steps {
+                    echo 'Testing app...'
+                    sh './gradlew connectedAndroidTest'
+                }
+            } catch (e) {
+                echo e.toString()
+            }
+            
+        }
+
+        stage('Core Test') {
             steps {
-                echo 'Testing...'
-                sh './gradlew connectedAndroidTest'
+                echo 'Testing core...'
+                sh './gradlew core:Test'
             }
         }
     }
