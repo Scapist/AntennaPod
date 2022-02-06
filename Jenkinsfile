@@ -10,22 +10,17 @@ pipeline {
                 sh './gradlew assembleDebug'
             }
         }
-        
-        try {
-            stage('App Test') {
-                steps {
-                    echo 'Testing app...'
-                    sh './gradlew connectedAndroidTest'
-                }
-            }
-        } catch (e) {
-            echo e.toString()
-        }
-
         stage('Core Test') {
             steps {
                 echo 'Testing core...'
                 sh './gradlew core:Test'
+            }
+        }
+
+        stage('App Test') {
+            steps {
+                echo 'Testing app...'
+                sh './gradlew connectedAndroidTest'
             }
         }
     }
