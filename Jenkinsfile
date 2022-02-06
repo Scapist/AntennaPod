@@ -17,10 +17,9 @@ pipeline {
                     echo 'Testing app...'
                     sh './gradlew connectedAndroidTest'
                 }
-            } catch (e) {
-                echo e.toString()
             }
-            
+        } catch (e) {
+            echo e.toString()
         }
 
         stage('Core Test') {
