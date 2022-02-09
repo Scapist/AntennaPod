@@ -13,7 +13,7 @@ pipeline {
         stage('Core Test') {
             steps {
                 echo 'Testing core...'
-                sh './gradlew core:Test'
+                sh './gradlew core:test'
             }
         }
 
